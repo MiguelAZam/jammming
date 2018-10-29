@@ -7,8 +7,10 @@ class TrackList extends Component{
 	render(){
 		return (
 				<div className="TrackList">
-    				{this.props.searchResults.map(track => {
-    					return <Track name={track.name} artist={track.artist} album={track.album} key={track.id}/>;
+    				{this.props.searchResults ? this.props.searchResults.map(track => {
+    					return <Track track={track} onAdd={this.props.onAdd} isRemoval={this.props.isRemoval} key={track.id}/>;
+    				}) : this.props.tracks.map(track => {
+    					return <Track track={track} onRemove={this.props.onRemove} isRemoval={this.props.isRemoval} key={track.id}/>;
     				})}
 				</div>
 			);
