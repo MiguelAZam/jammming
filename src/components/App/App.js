@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchBar from './../SearchBar/SearchBar.js';
 import SearchResults from './../Results/Results.js';
 import Playlist from './../Playlist/Playlist.js';
+import Spotify from './../../util/Spotify';
 import './App.css';
 
 class App extends Component {
@@ -9,10 +10,9 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-                  searchResults: [{name: 'Call me', artist: 'Unlike Pluto', album: 'Disaster', id: '83769873487'}, 
-                                  {name: 'Hi', artist: 'Unlike Pluto', album: 'Disaster', id: '83761273487'}],
                   playlistName: "New Playlist",
-                  playlistTracks: [{name: 'Test me', artist: 'Unlike Pluto', album: 'Disaster', id: '83as61273487'}]
+                  searchResults: [],
+                  playlistTracks: []
                   };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
@@ -42,10 +42,15 @@ class App extends Component {
 
   savePlaylist(){
     console.log("Hi");
+    Spotify.savePlaylist('Miguel', 'djsdfhj');
   }
 
   search(term){
-    console.log(term);
+    Spotify.getAccessToken();
+    Spotify.search(term).then(track => {
+      this.setState({searchResults: track});
+    });
+    //this.setState({searchResults: Spotify.search(term)});
   }
 
   render() {
