@@ -25,8 +25,8 @@ class App extends Component {
     if(this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)){
       return;
     }
-    this.state.playlistTracks.push(track);
-    this.setState(this.state.playlistTracks);
+    const newList = this.state.playlistTracks.concat(track);
+    this.setState({playlistTracks: newList});
   }
 
   removeTrack(myTrack){
