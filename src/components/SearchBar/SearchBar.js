@@ -3,26 +3,26 @@ import './SearchBar.css';
 
 class SearchBar extends Component{
 
-	constructor(props){
-		super(props);
-		this.search = this.search.bind(this);
-		this.handleTermChange = this.handleTermChange.bind(this);
-	}
-
-	search(){
+	search = () => {
 		if(this.state != null){
 			this.props.onSearch(this.state.term);
 		}
 	}
 
-	handleTermChange(event){
-		this.setState({term:event.target.value});
+	handleTermChange = (e) => {
+		this.setState({term:e.target.value});
+	}
+
+	handleKeyPressed = (e) => {
+		if(e.key === 'Enter'){
+			this.search();
+		}
 	}
 
 	render(){
 		return (
-				<div className="SearchBar">
-  					<input onChange={this.handleTermChange} placeholder="Enter A Song, Album, or Artist"/>
+				<div className="SearchBar zoomIn animated">
+  					<input onChange={this.handleTermChange} onKeyPress={this.handleKeyPressed} placeholder="Enter A Song, Album, or Artist"/>
   					<a onClick={this.search}>SEARCH</a>
 				</div>
 			);

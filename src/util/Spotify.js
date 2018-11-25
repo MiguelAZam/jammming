@@ -14,7 +14,7 @@ var Spotify={
 			userToken = accessToken[1];
 			expiresIn = expiresIn[1]
 			window.setTimeout(() => userToken = '', expiresIn * 1000);
-			window.history.pushState('Access Token', null, '/');
+			//window.history.pushState('Access Token', null, '/');
 			return userToken
 		} else{
 			window.location.replace(`https://accounts.spotify.com/authorize?client_id=${cliendID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`);

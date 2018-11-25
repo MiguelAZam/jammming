@@ -6,7 +6,7 @@ class Results extends Component{
 
 	render(){
 		return (
-				<div className="SearchResults">
+				<div className="SearchResults bounceInUp animated">
   					<h2>Results</h2>
   					<TrackList searchResults={this.props.searchResults} onAdd={this.props.onAdd} isRemoval={false}/>
 				</div>

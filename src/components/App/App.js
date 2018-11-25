@@ -10,18 +10,13 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-                  playlistName: "New Playlist",
-                  searchResults: [],
-                  playlistTracks: []
-                  };
-    this.addTrack = this.addTrack.bind(this);
-    this.removeTrack = this.removeTrack.bind(this);
-    this.updatePlaylistName = this.updatePlaylistName.bind(this);
-    this.savePlaylist = this.savePlaylist.bind(this);
-    this.search = this.search.bind(this);
+      playlistName: "New Playlist",
+      searchResults: [],
+      playlistTracks: []
+    };
   }
 
-  addTrack(track){
+  addTrack = track => {
     if(this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)){
       return;
     }
@@ -29,18 +24,18 @@ class App extends Component {
     this.setState({playlistTracks: newList});
   }
 
-  removeTrack(myTrack){
+  removeTrack = myTrack => {
     var newPlaylist = this.state.playlistTracks.filter(track =>{
       return (track.id!==myTrack.id)
     });
     this.setState({playlistTracks: newPlaylist});
   }
 
-  updatePlaylistName(newName){
+  updatePlaylistName = newName => {
     this.setState({playlistName: newName});
   }
 
-  savePlaylist(){
+  savePlaylist = () =>{
     var trackURI = [];
     this.state.playlistTracks.map(track => {
       return trackURI.push(track.uri);
@@ -49,7 +44,7 @@ class App extends Component {
     this.setState({playlistName: "New Playlist", playlistTracks: []});
   }
 
-  search(term){
+  search = term =>{
     Spotify.getAccessToken();
     Spotify.search(term).then(track => {
       this.setState({searchResults: track});
