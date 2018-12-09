@@ -4,14 +4,22 @@ import './TrackList.css';
 
 class TrackList extends Component{
 
+	//Function to display tracks in the DOM
+	displayTracks = (tracks) => {
+		//Deconstruct props for cleaner code
+		const {onMore, onAction, isRemoval} = this.props;
+		//Map tracks to display them in the track list component
+		return tracks.map(track => {
+    		return <Track onMore={onMore} track={track} onAction={onAction} isRemoval={isRemoval} key={track.id}/>;
+    	});
+	}
+
 	render(){
+		//Deconstruct props and get tracks
+		const {tracks} = this.props;
 		return (
 				<div className="TrackList">
-    				{this.props.searchResults ? this.props.searchResults.map(track => {
-    					return <Track track={track} onAdd={this.props.onAdd} isRemoval={this.props.isRemoval} key={track.id}/>;
-    				}) : this.props.tracks.map(track => {
-    					return <Track track={track} onRemove={this.props.onRemove} isRemoval={this.props.isRemoval} key={track.id}/>;
-    				})}
+    				{this.displayTracks(tracks)}
 				</div>
 			);
 	}

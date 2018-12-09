@@ -1,0 +1,62 @@
+.container{
+	font-family: 'Poppins', sans-serif;
+	color: white;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	display: none;
+}
+
+.bgModal{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.window{
+	position: relative;
+	background-color: #6f2c8b;
+	width: 60%;
+	margin: auto;
+	border-radius: 4%;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 15% 70% 15%;
+	grid-template-areas:"info" "image" "play"; 
+}
+
+img{
+	position: relative;
+	width: 45%;
+	height: auto;
+	margin: 0px 25%;
+	align-items: center;
+}
+
+audio{
+	width: 90%;
+	padding: 4px;
+	margin: 0px 5%;
+}
+
+.InfoBar{
+	grid-area: info;
+	background-color: #010c3f;
+	text-align: center;
+	padding: 14px;
+	font-size: 24px;
+	border-top-left-radius: 4%;
+	border-top-right-radius: 4%;
+}
+
+.Image{
+	grid-area: image;
+}
+
+.Sample{
+	grid-area: play;
+}
