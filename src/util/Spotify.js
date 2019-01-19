@@ -1,5 +1,5 @@
 var userToken = '';
-var cliendID = 'ed4388b93b1e46059a66011c8a176ef0'; //Client ID given by spotify
+var cliendID = ''; //Client ID given by spotify
 var redirectURI = 'http://localhost:3000/'; //URI to redirect when we get our user token from spotify
 
 var Spotify={
